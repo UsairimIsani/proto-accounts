@@ -1,7 +1,21 @@
 // use std;
 // use std::fmt;
+mod next_mod;
+use next_mod::B as c;
+mod odu;
+pub mod zol {
+    pub mod b {
 
+        pub fn e() {}
+    }
+}
+use zol::b;
 fn main() {
+    // // Using And Creating modules in rust
+    c::some_in_b();
+    b::e();
+    odu::writing_in_mod();
+    next_mod::do_something();
     // // Variables
     //
     // let a = 2;
@@ -70,6 +84,53 @@ fn main() {
     // let is_of_age = if age >= 21 { true } else { false };
     //   println!("Is Of Age: {}", is_of_age)
     //
+    // // Match (Incrredible)
+    //
+    // let mut n = 15;
+    // match n {
+    //     1 => println!("{}", n),
+    //     2 | 3 | 5 | 7 => println!("Is Prime {}", n),
+    //     15 => {
+    //         println!("Chicken Is {} hundred Rupees LOng", n);
+    //         n = n + 1;
+    //         println!("Chicken Is {} hundred Rupees LOng", n);
+    //     }
+    //     11..=19 => println!("Is a teeeeen dabe wala{}", n),
+    //     _ => println!("Nakara {}", n),
+    // }
+    //
+    //
+    // let pair = (56, 12);
+    // let pair = (56, 0);
+    // let pair = (0, 56);
+    // match pair {
+    //     (0, y) => println!("{} is the value of y", y),
+    //     (x, 0) => println!("{} is the value of x", x),
+    //     (x, y) => println!("The Value of X is {} and Y is {} ", x, y),
+    //     _ => println!("HAHA Sucker aint going to work ever"),
+    // }
+    //
+    //
+    // let pair = (12, 12);
+    // let pair = (56, 12);
+    // let pair = (57, 12);
+    // match pair {
+    //     (x, y) if x == y => println!("X is equal to y ({}, {})", x, y), // guards in action
+    //     (x, _) if x % 2 == 0 => println!("X is a even no. therefor {}", x),
+    //     _ => println!("HAHAHA",),
+    // }
+    // let p = 56;
+    // let n = match p {
+    //     n @ 1..=20 => n,
+    //     mut n @ 21..=56 => {
+    //         n = n + 56;
+    //         n
+    //     }
+    //     _ => 0,
+    // };
+    // println!("Value of n is {}", n);
+    //
+    //
     //
     // // loop
     //  loop{
@@ -100,7 +161,8 @@ fn main() {
     //     println!("Something in arr : {}", something);
     // }
     // // for with range
-    // for i in 0..10 {  // 0 inclusive 10 not inclusive
+    // for i in 0..10 { // 0 inclusive 10 not inclusive
+    // for i in 0..=10 { // 0 inclusive 10 also inclusive
     // println!("Something in arr : {}", i);
     // }
     // for i in (0..10).rev() {  // reverse range
