@@ -4,7 +4,7 @@ fn st(s: &str) -> String {
 fn main() {
     unsafe {
         let mut vec: Vec<i32> = vec![2, 3, -65, 90];
-        let size = vec.capacity() as isize;
+        let size = vec.capacity() as isize - 1;
         let ptr_to_vec = vec.as_mut_ptr();
         let end_addr = ptr_to_vec.offset(size);
         println!(
