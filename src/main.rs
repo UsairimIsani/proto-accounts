@@ -1,13 +1,16 @@
-use std::collections::HashMap;
 fn main() {
-    life_time_playground()
+    let v = String::from("Chicken");
+    let res = longest_with_an_announcement("chic", "mut", &v);
+    println!("{}", res);
 }
-fn life_time_playground() {
-    let text = "hello world world world wonderful world";
-    let mut map = HashMap::new();
-    for word in text.split_whitespace() {
-        let count = map.entry(word).or_insert(0);
-        *count += 1;
-        println!("{} ", count);
+use std::fmt::{Debug, Display};
+fn longest_with_an_announcement<'a, 'b, 'c, T>(x: &'a str, y: &'b str, ann: &'c T) -> &'c T
+where
+    T: Debug,
+{
+    if x.len() > y.len() {
+        ann
+    } else {
+        ann
     }
 }
