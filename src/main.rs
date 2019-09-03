@@ -1,28 +1,43 @@
+#[derive(PartialEq, Debug)]
+struct Shirt {
+    size: u32,
+    brand: String,
+    quality: u32,
+    quantity: u32,
+}
+impl Shirt {
+    fn new(size: u32, brand: String, quality: u32, quantity: u32) -> Shirt {
+        Shirt {
+            size,
+            brand,
+            quality,
+            quantity,
+        }
+    }
+}
+impl Iterator for Shirt {
+    type Item = u32;
+    fn next(&mut self) -> Option<Self::Item> {
+        if self.quantity >= 0 {
+            self.quantity -= 1;
+            Some(self.quantity)
+        } else {
+            println!("{}", self.quantity);
+            None
+        }
+    }
+}
 fn main() {
-    // Closures in Rust
-    //
-    // basic_eg();
-    eg_two();
-}
-fn eg_two() {
-    let a = vec![1, 2, 3];
-    let b = vec![1, 2, 3];
-    let s_c = move |x: Vec<i32>, y: Vec<i32>| {
-        let z: Vec<_> = x.iter().zip(y.iter()).collect();
-        println!("{:?}", z);
-        // [(1, 1), (2, 2), (3, 3)]
-    };
-    s_c(a, b);
-    // println!("{:?}",a); // Wont work a was moved inside the closure so was dropped
-    let some = vec![1, 2, 3, 4, 5];
-    let other: Vec<_> = some.iter().map(|x| x + x).map(|y| y - 1).collect();
-    println!("{:?}", other);
-    // [1, 3, 5, 7, 9]
-}
-
-fn basic_eg() {
-    let y = 2;
-    let x = 2;
-    let some_closure = |x| x == y;
-    println!("is x :{} equal to y : {} ? {} ", x, y, some_closure(x));
+    let mut a: Shirt = Shirt::new(15, String::from("Nike"), 50, 70);
+    println!("{:?}", a);
+    let b = a.quantity;
+    let b = b as i32;
+    for i in 0..b {
+        let some = &a.next();
+        match some {
+            Some(t) => println!("Shirts Here {:?}", t),
+            None => println!("All Out"),
+        }
+    }
+    println!("{:?}", a);
 }
